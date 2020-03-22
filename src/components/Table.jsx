@@ -18,7 +18,6 @@ export default class Home extends Component {
 
     componentDidMount() {
         axiosGET('/api/classrooms/').then(res => {
-            console.log(res.data)
             this.setState({ data: res.data });
         })
     }

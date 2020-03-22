@@ -10,10 +10,6 @@ const router = express.Router();
 
 router.get('/', async (req, res, next) => {
     try {
-
-        console.log("In Routes/classrooms.js")
-        console.log(req.query);
-
         Classroom.find()
             .sort({
                 dept: 1,
@@ -24,40 +20,16 @@ router.get('/', async (req, res, next) => {
                 (err, classrooms) => {
                     if (err) return (next(err));
 
-                    console.log(classrooms);
                     res.status(200).json(classrooms);
                 }
             )
     } catch (e) {
-        error.log(e);
-        res.status(500).json({});
-    }
-});
-
-
-router.post('/', async (req, res, next) => {
-    try {
-        console.log("Request: ")
-        console.log(req.body);
-    } catch (e) {
-        error.log(e);
-        res.status(500).json({});
-    }
-});
-
-
-router.post('/search/', async (req, res, next) => {
-    try {
-        console.log("Request: ")
-        console.log(req.body);
-    } catch (e) {
-        error.log(e);
+        error.error(e);
         res.status(500).json({});
     }
 });
 
 router.post('/create/', async (req, res, next) => {
-    console.log("Reached /api/create")
         try {
             data = req.body;
             await Classroom.findOrCreate({
@@ -74,17 +46,16 @@ router.post('/create/', async (req, res, next) => {
                 },
                 (err, classroom) => {
                     if (err) {
-                        console.log(err)
+                        console.error(err)
                         res.status(500).json({});
                     } else {
-                        console.log(classroom);
                         res.status(200).json(classroom);
                     }
                 }
             )
 
         } catch (e) {
-            console.log(e);
+            console.error(e);
             res.status(500).json({});
         }
     },
