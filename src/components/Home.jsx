@@ -1,12 +1,14 @@
 ﻿import React, { Component } from 'react'
-import CreateForm from "./CreateForm";
+import Table from "./Table";
 
 export default class Home extends Component {
     render() {
         return (
             <React.Fragment>
                 <div className="container">
-                    <CreateForm></CreateForm>
+                    <div className="my-5">
+                        <Table></Table>
+                    </div>
                 </div>
             </React.Fragment>
         )

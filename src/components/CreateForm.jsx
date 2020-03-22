@@ -24,7 +24,6 @@ export default class CreateForm extends Component {
         let val = event.target.value;
 
         this.setState({[nam]: val});
-        console.log({[nam]: val});
     }
 
     onCheckboxChangeHandler = (event) => {
@@ -37,16 +36,12 @@ export default class CreateForm extends Component {
             prevDays.splice(index, 1);
             this.setState({days: prevDays});
         }
-
-        console.log(this.state.days);
     }
 
     onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log(this.state);
 
-        axiosPOST('/api/classrooms/create/', this.state)
-        .then(res => console.log(res.data));
+        axiosPOST('/api/classrooms/create/', this.state);
     }
 
     render() {

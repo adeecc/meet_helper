@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 const mongoose = require('mongoose');
+const compression = require('compression');
+const helmet = require('helmet');
 
 const indexRouter = require("./routes/index");
 const CONSTANTS = require("./constants");
@@ -12,7 +14,10 @@ const CONSTANTS = require("./constants");
 const app = express();
 
 
-app.use(cors())
+app.use(cors());
+app.use(compression());
+app.use(helmet());
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -48,7 +53,7 @@ if (process.env.NODE_ENV === "production") {
   // Log stack trace of error message while in development
   app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    console.log(err);
+    console.error(err);
     res.send(err.message);
   });
 }

@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Table from "./components/Table";
+import CreatePage from "./components/CreatePage"
 
 //TODO Web Template Studio: Add routes for your new pages here.
 const App = () => {
@@ -14,7 +15,7 @@ const App = () => {
             <Navbar />
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/Table" component={Table} />
+                <Route path="/create" component={CreatePage} />
             </Switch>
             <Footer />
         </React.Fragment>
