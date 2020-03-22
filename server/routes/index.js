@@ -7,9 +7,6 @@ const router = express.Router();
 
 
 const classrooms = require("./classrooms");
-const courses = require("./courses");
-const professors = require("./professors");
-
 
 
 // LIST ENDPOINTS
@@ -20,8 +17,6 @@ router.all('/', (req, res, next) => {
 });
 
 router.use('/classrooms', classrooms);
-router.use('/courses', courses);
-router.use('/professors', professors);
 
 
 

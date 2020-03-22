@@ -13,7 +13,7 @@
         },
         "course": {
             "_id": "5e763ac5a18a0c2cb984c6cd",
-            "branch": "MATH",
+            "department": "MATH",
             "code": "F112",
             "name": "Linear Algebra and Complex Analysis",
             "__v": 0

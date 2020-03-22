@@ -19,8 +19,6 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-let professors = []
-let courses = []
 let classrooms = []
 
 professorCreate = (name, cb) => {
@@ -42,9 +40,9 @@ professorCreate = (name, cb) => {
     });
 }
 
-courseCreate = (branch, code, name, cb) => {
+courseCreate = (department, code, name, cb) => {
     courseDetail = {
-        branch: branch,
+        department: department,
         code: code,
         name: name,
     }

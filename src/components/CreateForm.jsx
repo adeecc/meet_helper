@@ -46,7 +46,7 @@ export default class CreateForm extends Component {
         console.log(this.state);
 
         axiosPOST('/api/classrooms/create/', this.state)
-        // .then(res => console.log(res.data));
+        .then(res => console.log(res.data));
     }
 
     render() {

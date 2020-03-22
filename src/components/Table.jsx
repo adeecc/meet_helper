@@ -27,14 +27,14 @@ export default class Home extends Component {
         let getRows = () => {
             return this.state.data.map(el => (
                 <tr key={el._id}>
-                    <td>{el.course.branch} {el.course.code}</td>
+                    <td>{el.dept} {el.code}</td>
                     <td>
                         <a href={el.meet_link}>
-                            {el.course.name}
+                            {el.name}
                         </a>
                     </td>
                     <td>{el.section}</td>
-                    <td>{el.professor.name}</td>
+                    <td>{el.professor}</td>
                     <td>
                         {el.day.map(item => item)}
                     </td>
@@ -48,7 +48,7 @@ export default class Home extends Component {
             <React.Fragment>
                 <div className="container">
 
-                    <div class="form-row">
+                    {/* <div class="form-row">
                         <div class="form-group col-md-2">
                             <input type="text" class="form-control" id="inputCourseDept" placeholder="Dept." />
                         </div>
@@ -64,7 +64,7 @@ export default class Home extends Component {
                         <div class="form-group col-md-1">
                             <button type="submit" class="btn btn-primary ">Search</button>
                         </div>
-                    </div>
+                    </div> */}
 
 
 
