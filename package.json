@@ -25,23 +25,25 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.2.0",
-    "supergoose": "^0.2.6"
+    "supergoose": "^0.2.6",
+    "concurrently": "5.0.2",
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "devDependencies": {
-    "concurrently": "5.0.2",
     "nodemon": "^1.18.10"
   },
   "scripts": {
-    "start": "concurrently \"yarn start-frontend || npm run start-frontend\" \"yarn start-backend || npm run start-backend\"",
-    "start-backend": "nodemon server/server.js",
-    "start-frontend": "react-scripts start",
+    "start": "node server/index.js",
+    "dev": "concurrently \"yarn client|| npm run client\" \"yarn server || npm run server\"",
+    "server": "node --watch server server/server.js",
+    "client": "react-scripts start",
     "build": "node ./buildScript",
+    "heroku-postbuild": "npm run build || yarn build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js src/**/*.jsx"
+    "lint": "eslint src/**/*.js src/**/*.jsx"    
   },
   "proxy": "http://localhost:3001",
   "browserslist": [
