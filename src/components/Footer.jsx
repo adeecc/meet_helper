@@ -1,39 +1,37 @@
 ﻿import React from "react";
-import styles from "../assets/css/footer.module.css";
+import { Link } from 'react-router-dom'
+import "../assets/css/Footer.scss"
 
-const Footer = () => {
-  return (
-    <footer className={styles.footer}>
-      <div className="container-fluid">
-        <div className="row justify-content-around">
-          <div className="col-8 col-md-5">
-            <h5 className={styles.title}>meet_helper</h5>
-            <p className={styles.description}>
-              This is placeholder text. Your web app description goes here.
-            </p>
-          </div>
-          <div className="col-2">
-            <ul className="list-unstyled">
-              <li>
-                <a className={styles.footerlink} href="/">
-                  Example Link
-                </a>
-              </li>
-              <li>
-                <a className={styles.footerlink} href="/">
-                  Example Link
-                </a>
-              </li>
-              <li>
-                <a className={styles.footerlink} href="/">
-                  Example Link
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+export default function Footer() {
+    return (
+        <footer className="footer">
+            <div className="container-fluid">
+                <div className="row justify-content-around footer-nav py-3">
+                    <div className="col-md-6 footer-item title">
+                        <h1>Meet Helper</h1>
+                    </div>
+
+                    <div className="col-md-6 footer-item description py-3">
+                        Please don't fuck it up ;_;
+                    </div>
+
+
+                </div>
+                <div className="row justify-content-around footer-nav">
+                    <div className="col footer-item footer-item-nav">
+                        <Link className="footerlink" to="/">
+                            Home
+                        </Link>
+                    </div>
+
+                    <div className="col footer-item footer-item-nav">
+                        <Link className="footerlink" to="/create">
+                            Create Classroom
+                        </Link>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    );
 }
-export default Footer;

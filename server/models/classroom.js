@@ -8,15 +8,10 @@ const classroomSchema = new Schema({
         type: String,
         required: true
     }, 
-    dept: {
-        type: String,
-        required: true,
-        max: 4
-    },
     code: {
         type: String,
         required: true,
-        max: 4,
+        max: 10,
     },
     name: {
         type: String,

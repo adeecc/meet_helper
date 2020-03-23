@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
+import { withRouter } from "react-router";
+
 import { axiosPOST } from '../utils/axiosClient'
 
-export default class CreateForm extends Component {
+class CreateForm extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            courseDept: "",
-            courseCode: "",
-            courseName: "",
+            code: "",
+            name: "",
             section: "",
-            professorName: "",
+            professor: "",
             hour: "",
             meet_link: "",
             drive_link: "",
@@ -41,86 +42,87 @@ export default class CreateForm extends Component {
     onSubmitHandler = (event) => {
         event.preventDefault();
 
-        axiosPOST('/api/classrooms/create/', this.state);
+        axiosPOST('/api/classrooms/create/', this.state)
+        .then(res => {
+            console.log(res);
+            this.props.history.push('/')
+        });
     }
 
     render() {
         return (
             <React.Fragment>
                 <form onSubmit={this.onSubmitHandler}>
-                    <div class="form-row">
-                        <div class="form-group col-md-2">
-                            <input onChange={this.onTextInputChangeHandler} type="text" class="form-control" name="courseDept" id="inputCourseDept" placeholder="Department" />
+                    <div className="form-row">
+                        <div className="form-group col-md-4">
+                            <input onChange={this.onTextInputChangeHandler} type="text" className="form-control" name="code" id="inputCode" placeholder="Code" />
                         </div>
-                        <div class="form-group col-md-2">
-                            <input onChange={this.onTextInputChangeHandler} type="text" class="form-control" name="courseCode" id="inputCourseCode" placeholder="Code" />
+                        <div className="form-group col-md-6">
+                            <input onChange={this.onTextInputChangeHandler} type="text" className="form-control" name="name" id="inputName" placeholder="Course Name" />
                         </div>
-                        <div class="form-group col-md-6">
-                            <input onChange={this.onTextInputChangeHandler} type="text" class="form-control" name="courseName" id="inputCourseName" placeholder="Course Name" />
-                        </div>
-                        <div class="form-group col-md-2">
-                            <input onChange={this.onTextInputChangeHandler} type="text" class="form-control" name="section" id="inputSection" placeholder="Section" />
+                        <div className="form-group col-md-2">
+                            <input onChange={this.onTextInputChangeHandler} type="text" className="form-control" name="section" id="inputSection" placeholder="Section" />
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <input onChange={this.onTextInputChangeHandler} type="text" class="form-control" name="professorName" id="inputProfessorName" placeholder="Professor" />
+                    <div className="form-row">
+                        <div className="form-group col-md-4">
+                            <input onChange={this.onTextInputChangeHandler} type="text" className="form-control" name="professor" id="inputProfessor" placeholder="Professor" />
                         </div>
-                        <div class="form-group col-md-2">
-                            <input onChange={this.onTextInputChangeHandler} type="text" class="form-control" name="hour" id="inputCourseCode" placeholder="Hour (1-9)" />
+                        <div className="form-group col-md-2">
+                            <input onChange={this.onTextInputChangeHandler} type="text" className="form-control" name="hour" id="inputHour" placeholder="Hour (1-9)" />
                         </div>
-                        <div class="form-group  col-md-6">
-                            <input onChange={this.onTextInputChangeHandler} type="text" class="form-control" name="meet_link" id="inputProfessorName" placeholder="Google Meet Link" />
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group  col">
-                            <input onChange={this.onTextInputChangeHandler} type="text" class="form-control" name="drive_link" id="inputProfessorName" placeholder="Drive Link (if any)" />
+                        <div className="form-group  col-md-6">
+                            <input onChange={this.onTextInputChangeHandler} type="text" className="form-control" name="meet_link" id="inputMeetLink" placeholder="Google Meet Link" />
                         </div>
                     </div>
 
-                    <div class="form-inline">
-                        <div class="form-check custom-checkbox form-check-inline col">
-                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" class="form-check-input" name="days" id="DayM" value="M" />
-                            <label class="form-check-label" for="DayM">Monday</label>
+                    <div className="form-row">
+                        <div className="form-group  col">
+                            <input onChange={this.onTextInputChangeHandler} type="text" className="form-control" name="drive_link" id="inputDriveLink" placeholder="Drive Link (if any)" />
+                        </div>
+                    </div>
+
+                    <div className="form-inline">
+                        <div className="form-check custom-checkbox form-check-inline col">
+                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" className="form-check-input" name="days" id="DayM" value="M" />
+                            <label className="form-check-label" htmlFor="DayM">Monday</label>
                         </div>
 
 
-                        <div class="form-check custom-checkbox form-check-inline col">
-                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" class="form-check-input" name="days" id="Dayt" value="T" />
-                            <label class="form-check-label" for="DayT">Tuesday</label>
+                        <div className="form-check custom-checkbox form-check-inline col">
+                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" className="form-check-input" name="days" id="Dayt" value="T" />
+                            <label className="form-check-label" htmlFor="DayT">Tuesday</label>
                         </div>
 
 
-                        <div class="form-check custom-checkbox form-check-inline col">
-                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" class="form-check-input" name="days" id="DayW" value="W" />
-                            <label class="form-check-label" for="DayW">Wednesday</label>
+                        <div className="form-check custom-checkbox form-check-inline col">
+                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" className="form-check-input" name="days" id="DayW" value="W" />
+                            <label className="form-check-label" htmlFor="DayW">Wednesday</label>
                         </div>
 
 
-                        <div class="form-check custom-checkbox form-check-inline col">
-                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" class="form-check-input" name="days" id="DayTh" value="Th" />
-                            <label class="form-check-label" for="DayTh">Thursday</label>
+                        <div className="form-check custom-checkbox form-check-inline col">
+                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" className="form-check-input" name="days" id="DayTh" value="Th" />
+                            <label className="form-check-label" htmlFor="DayTh">Thursday</label>
                         </div>
 
 
-                        <div class="form-check custom-checkbox form-check-inline col">
-                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" class="form-check-input" name="days" id="DayF" value="F" />
-                            <label class="form-check-label" for="DayF">Friday</label>
+                        <div className="form-check custom-checkbox form-check-inline col">
+                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" className="form-check-input" name="days" id="DayF" value="F" />
+                            <label className="form-check-label" htmlFor="DayF">Friday</label>
                         </div>
 
 
-                        <div class="form-check custom-checkbox form-check-inline col">
-                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" class="form-check-input" name="days" id="DayS" value="S" />
-                            <label class="form-check-label" for="DayS">Saturday</label>
+                        <div className="form-check custom-checkbox form-check-inline col">
+                            <input onChange={this.onCheckboxChangeHandler} type="checkbox" className="form-check-input" name="days" id="DayS" value="S" />
+                            <label className="form-check-label" htmlFor="DayS">Saturday</label>
                         </div>
                     </div>
 
 
-                    <div class="form-row mt-3">
-                        <button type="submit" class="btn btn-primary  mx-auto col-sm-3">Save</button>
+                    <div className="form-row mt-3">
+                        <button type="submit" className="btn btn-primary  mx-auto col-sm-3">Save</button>
                     </div>
 
                 </form>
@@ -128,3 +130,5 @@ export default class CreateForm extends Component {
         )
     }
 }
+
+export default withRouter(CreateForm);

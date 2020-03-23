@@ -1,29 +1,36 @@
-﻿import React from "react";
-import { Link } from "react-router-dom";
-import styles from "../assets/css/navbar.module.css";
+﻿import React, { Component } from "react";
 
-//TODO Web Template Studio: Add a new link in the NavBar for your page here.
-// A skip link is included as an accessibility best practice. For more information visit https://www.w3.org/WAI/WCAG21/Techniques/general/G1.
-const NavBar = () => {
-  return (
-    <React.Fragment>
-      <div className={styles.skipLink}>
-        <a href="#mainContent">Skip to Main Content</a>
-      </div>
-      <nav className="navbar navbar-expand-sm navbar-light border-bottom justify-content-between">
-        <Link className="navbar-brand" to="/">
-          meet_helper
-        </Link>
-        <div className="navbar-nav">
-          <Link className="nav-item nav-link active" to="/">
-            Home
-          </Link>
-          <Link className="nav-item nav-link active" to="Table">
-            Table
-          </Link>
-        </div>
-      </nav>
-    </React.Fragment>
-  );
+import { withRouter } from "react-router";
+import { Link } from 'react-router-dom'
+
+class Navbar extends Component {
+    render() {
+        return (
+            <React.Fragment>
+                <nav className="navbar navbar-expand-sm navbar-dark bg-dark justify-content-around" ref="navbar">
+                    <div className="container">
+                        <div>
+                            <Link className="navbar-brand" to="/">BPHC Meet Helper</Link>
+                        </div>
+                        <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div className="collapse navbar-collapse" id="collapsibleNavId">
+                            <ul className="navbar-nav social-links ml-auto">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/create">Create Classroom</Link>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </nav>
+            </React.Fragment >
+        );
+    }
 }
-export default NavBar;
+
+export default withRouter(Navbar);

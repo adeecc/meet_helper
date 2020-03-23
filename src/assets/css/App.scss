@@ -1,0 +1,44 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway|Roboto&display=swap');
+
+body {
+    font-family: 'Raleway', 'Lato', 'Roboto', sans-serif;
+    padding: 0;
+    text-align: justify;
+
+    #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #FFF;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #CBCBCB;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #909090;
+}
+
+
+button:focus,
+button:active {
+    outline: none !important;
+    box-shadow: none !important;
+}

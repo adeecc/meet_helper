@@ -8,6 +8,7 @@
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
     "compression": "^1.7.4",
+    "concurrently": "5.0.2",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
@@ -25,8 +26,7 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.2.0",
-    "supergoose": "^0.2.6",
-    "concurrently": "5.0.2"
+    "supergoose": "^0.2.6"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,7 +43,7 @@
     "heroku-postbuild": "npm run build || yarn build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js src/**/*.jsx"    
+    "lint": "eslint src/**/*.js src/**/*.jsx"
   },
   "proxy": "http://localhost:3001",
   "browserslist": [
