@@ -1,10 +1,4 @@
-﻿#!/usr/bin/env node
-
-/**
- * Module dependencies.
- */
-
-const debug = require("debug")("WebTemplateStudioExpress:server");
+﻿const debug = require("debug")("WebTemplateStudioExpress:server");
 const http = require("http");
 const app = require("./app");
 const CONSTANTS = require("./constants");

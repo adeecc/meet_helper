@@ -37,7 +37,7 @@
   "scripts": {
     "start": "node server/server.js",
     "dev": "concurrently \"yarn client|| npm run client\" \"yarn server || npm run server\"",
-    "server": "node --watch server server/server.js",
+    "server": "nodemon --watch server server/server.js",
     "client": "react-scripts start",
     "build": "node ./buildScript",
     "heroku-postbuild": "npm run build || yarn build",
