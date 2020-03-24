@@ -1,14 +1,14 @@
 ﻿import React from "react";
 import { Link } from 'react-router-dom'
-import "../assets/css/Footer.scss"
+import "../assets/css/Footer.css"
 
-export default function Footer() {
+function Footer() {
     return (
         <footer className="footer">
             <div className="container-fluid">
                 <div className="row justify-content-around footer-nav py-3">
                     <div className="col-md-6 footer-item title">
-                        <h1>Meet Helper</h1>
+                        <h1>Meet Help</h1>
                     </div>
 
                     <div className="col-md-6 footer-item description py-3">
@@ -35,3 +35,5 @@ export default function Footer() {
         </footer>
     );
 }
+
+export default Footer;

@@ -2,7 +2,7 @@
 import { axiosGET, axiosPOST } from '../utils/axiosClient'
 
 
-export default class Home extends Component {
+class Home extends Component {
     constructor() {
         super()
         this.state = {
@@ -29,7 +29,7 @@ export default class Home extends Component {
 
         this.setState({ [nam]: val });
 
-        console.log(this.state);
+
     }
 
     onSubmitHandler = (event) => {
@@ -41,17 +41,27 @@ export default class Home extends Component {
             professor: this.state.professor
         }
 
-        console.log("Posting FOllowing Data: ")
-        console.log(data)
-
         axiosPOST('/api/classrooms/search/', data)
-        .then(res => {
-            console.log(res.data);
-            this.setState({ data: res.data });
-        });
+            .then(res => {
+
+                this.setState({ data: res.data });
+            });
     }
 
     render() {
+        let driveLinkConditional = (el) => {
+            if (el.drive_link) {
+                return (
+                    <a href={el.drive_link}>
+                        Click Here.
+                    </a>
+                )
+            }
+
+            else {
+                return (<div>-</div>)
+            }
+        }
 
         let getRows = () => {
             return this.state.data.map(el => (
@@ -65,10 +75,12 @@ export default class Home extends Component {
                     <td>{el.section}</td>
                     <td>{el.professor}</td>
                     <td>
-                        {el.day.map(item => item)}
+                        {el.day.map( item => item )}
                     </td>
                     <td>{el.hour}</td>
-                    <td>{el.drive_link}</td>
+                    <td>
+                        {driveLinkConditional(el)}
+                    </td>
                 </tr>
             ));
         };
@@ -76,46 +88,48 @@ export default class Home extends Component {
         return (
             <React.Fragment>
                 <div className="container">
-                    <h1 className="display-4">Karuna Time</h1>
+                    <h1 className="display-4 mt-5">Karuna Tiem</h1>
 
                     <div className="mt-5">
-                    <form onSubmit={this.onSubmitHandler}>
-                    <div className="form-row">
-                        <div className="form-group col-md-2">
-                            <input onChange={this.onChangeHandler} type="text" className="form-control" name="code" id="inputCode" placeholder="Code" />
-                        </div>
-                        <div className="form-group col-md-2">
-                            <input onChange={this.onChangeHandler} type="text" className="form-control" name="section" id="inputSection" placeholder="Sec." />
-                        </div>
-                        <div className="form-group col-md">
-                            <input onChange={this.onChangeHandler} type="text" className="form-control" name="professor" id="inputProfessor" placeholder="Professor" />
-                        </div>
-                        <div className="form-group col-md-1">
-                            <button type="submit" className="btn btn-primary ">Search</button>
-                        </div>
-                    </div>
-                </form>
+                        <form onSubmit={this.onSubmitHandler}>
+                            <div className="form-row">
+                                <div className="form-group col-md-2">
+                                    <input onChange={this.onChangeHandler} type="text" className="form-control" name="code" id="inputCode" placeholder="Code" />
+                                </div>
+                                <div className="form-group col-md-2">
+                                    <input onChange={this.onChangeHandler} type="text" className="form-control" name="section" id="inputSection" placeholder="Sec." />
+                                </div>
+                                <div className="form-group col-md">
+                                    <input onChange={this.onChangeHandler} type="text" className="form-control" name="professor" id="inputProfessor" placeholder="Professor" />
+                                </div>
+                                <div className="form-group col-md-1">
+                                    <button type="submit" className="btn btn-primary ">Search</button>
+                                </div>
+                            </div>
+                        </form>
 
                     </div>
 
                     <table className="table table-responsive-md my-5">
-                    <thead>
-                        <tr>
-                            <th>Code</th>
-                            <th>Name</th>
-                            <th>Section</th>
-                            <th>Professor</th>
-                            <th>Days</th>
-                            <th>Hour</th>
-                            <th>Drive Links</th>
-                        </tr>
-                    </thead>
-                    <tbody ref="table_body">
-                        {getRows()}
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Section</th>
+                                <th>Professor</th>
+                                <th>day</th>
+                                <th>Hour</th>
+                                <th>Drive Links</th>
+                            </tr>
+                        </thead>
+                        <tbody ref="table_body">
+                            {getRows()}
+                        </tbody>
+                    </table>
                 </div>
             </React.Fragment>
         )
     }
 }
+
+export default Home;

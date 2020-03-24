@@ -7,7 +7,6 @@ const router = express.Router();
 
 
 // LIST ENDPOINTS
-
 router.all('/', (req, res, next) => {
   next();
 });

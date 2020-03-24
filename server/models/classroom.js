@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-var supergoose = require('supergoose')
-
 const classroomSchema = new Schema({
     professor: {
         type: String,
         required: true
-    }, 
+    },
     code: {
         type: String,
         required: true,
@@ -41,7 +39,6 @@ const classroomSchema = new Schema({
     }],
 });
 
-classroomSchema.plugin(supergoose);
 classroomSchema.virtual('url').get(() => '/classroom/' + this._id);
 
 module.exports = mongoose.model("Classroom", classroomSchema);
