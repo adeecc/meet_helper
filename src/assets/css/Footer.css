@@ -1,0 +1,35 @@
+﻿.footer {
+    background-color: black;
+    padding: 2rem 0;
+    width: 100%;
+}
+
+.footer .title {
+    color: #fff;
+}
+
+.footer .description {
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.footer .footer-item {
+    text-align: center;
+}
+
+.footer .footer-item-nav {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.footer .footer-item-nav:last-child {
+    border: none;
+}
+
+.footer .footerlink {
+    color: #ddd;
+}
+
+.footer .footerlink:hover {
+    color: #fff;
+    text-decoration: none;
+}
